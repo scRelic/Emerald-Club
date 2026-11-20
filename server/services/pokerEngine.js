@@ -286,10 +286,10 @@ const continueActions = (state, randomInt) => {
 export const startPokerHand = (state, randomInt) => {
     const table = tableFor(state.tableId);
 
-    if (state.tableChips < table.bigBlind * 10) {
+    if (state.tableChips < table.minBuyIn) {
         throw Object.assign(
             new Error(
-                `Для начала раздачи необходимо минимум ${table.bigBlind * 10} фишек за столом.`
+                `Для начала раздачи необходимо минимум ${table.minBuyIn} фишек за столом.`
             ),
             { status: 409 }
         );
@@ -338,7 +338,7 @@ export const startPokerHand = (state, randomInt) => {
     return state;
 };
 
-export const createPokerSession = ({ tableId, buyIn }, randomInt) => {
+export const createPokerSession = ({ tableId, buyIn }) => {
     const table = tableFor(tableId);
 
     if (

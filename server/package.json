@@ -9,7 +9,7 @@
     "test:auth": "node --test utils/password.test.js",
     "test:player-state": "node --test controllers/playerController.test.js",
     "test:security": "node --test middleware/csrfProtection.test.js middleware/authRateLimit.test.js",
-    "test:games": "node --test services/gameRules.test.js services/blackjackEngine.test.js services/pokerEngine.test.js controllers/blackjackController.test.js"
+    "test:games": "node --test services/gameRules.test.js services/blackjackEngine.test.js services/pokerEngine.test.js controllers/blackjackController.test.js controllers/pokerController.test.js"
   },
   "keywords": [],
   "author": "",

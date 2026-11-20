@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { onBeforeRouteLeave, useRoute } from "vue-router";
 import { usePlayerStore } from "@/stores/playerStore";
 import { usePoker } from "@/composables/usePoker";
 import { formatNumber } from "@/utils";
@@ -51,6 +51,11 @@ const {
   raise,
   fold,
 } = usePoker(route.query.table);
+
+onBeforeRouteLeave(async () => {
+  if (!isSeated.value) return true;
+  return leaveTable();
+});
 
 const stageLabels = {
   idle: "Ожидание",
@@ -375,7 +380,6 @@ const getSeatPosition = (index, total) => {
             </div>
 
             <button
-              v-if="!isPlaying()"
               @click="leaveTable"
               class="px-2.5 py-1 rounded-lg text-xs font-medium text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-400/25 transition cursor-pointer">
               Выйти со стеком

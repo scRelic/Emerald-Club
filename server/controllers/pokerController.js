@@ -36,7 +36,7 @@ export const createPokerController = ({
             const state = createPokerSession({
                 tableId: body.tableId,
                 buyIn: body.buyIn,
-            }, randomInt);
+            });
             if (Number(player.chips) < state.buyIn) {
                 throw httpError(409, 'Недостаточно фишек для входа за этот стол.');
             }

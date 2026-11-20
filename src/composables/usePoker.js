@@ -154,13 +154,19 @@ export const usePoker = (tableId) => {
     const fold = () => submitAction('fold');
 
     const leaveTable = async () => {
-        await performOperation('/games/poker/leave', {}, () => clearSession());
+        const result = await performOperation('/games/poker/leave', {}, () => clearSession());
+        return result !== null;
     };
 
     const resumeSession = async () => {
         try {
             const response = await apiRequest('/games/poker/session');
-            applySession(response?.session || null);
+            if (response?.session) {
+                applySession(response.session);
+                await leaveTable();
+            } else {
+                clearSession();
+            }
         } catch (error) {
             errorMessage.value = error.message || 'Не удалось восстановить покерную сессию.';
         }
