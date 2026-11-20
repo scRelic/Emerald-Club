@@ -1,6 +1,14 @@
-const localHostname = typeof window === 'undefined' ? 'localhost' : window.location.hostname;
-const API_BASE_URL = ((import.meta.env && import.meta.env.VITE_API_BASE_URL) || `http://${localHostname}:5000/api`)
-    .replace(/\/+$/, '');
+
+const localHostname =
+    typeof window === 'undefined'
+        ? 'localhost'
+        : window.location.hostname;
+
+const API_BASE_URL = (
+    import.meta.env.VITE_API_BASE_URL ||
+    `http://${localHostname}:5000/api`
+).replace(/\/+$/, '');
+
 
 export class ApiError extends Error {
     constructor(message, status = 0) {
