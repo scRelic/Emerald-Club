@@ -6,12 +6,10 @@ const localHostname =
 
 
 const API_BASE_URL = (
-    import.meta.env.VITE_API_BASE_URL ||
-    (import.meta.env.DEV
+    import.meta.env.DEV
         ? 'http://localhost:5000/api'
-        : 'https://emerald-club.onrender.com/api')
+        : '/api'
 ).replace(/\/+$/, '');
-
 
 
 export class ApiError extends Error {
