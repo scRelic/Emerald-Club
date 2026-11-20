@@ -1,154 +1,217 @@
 # ♠ Emerald Club
 
-**Full-Stack Casino-Style Gaming Platform**
+### Full-Stack Casino-Style Gaming Platform
 
-A personal pet project focused on building an interactive gaming platform with a modern frontend, REST API, persistent player progress, and server-side game logic.
+Emerald Club is a personal full-stack pet project focused on building an interactive gaming platform with a modern frontend, REST API, persistent player progress, and server-side game logic.
 
-[**🎮 Live Demo**](https://emerald-club.vercel.app) · [**💻 Source Code**](https://github.com/scRelic/Emerald-Club)
+**[🎮 Live Demo](https://emerald-club.vercel.app)** · **[💻 Source Code](https://github.com/scRelic/Emerald-Club)**
 
 ---
 
 ## ✨ Features
 
-- 🎲 Multiple games: Poker, Blackjack, Roulette, Dice, and Fortune
-- 👤 User registration and authentication
-- 💰 Virtual chip balance and game progress
-- 🃏 Server-side game logic and result calculation
-- 🏆 Player achievements and statistics
-- 🎨 Responsive interface with Tailwind CSS
-- 💾 Persistent data storage with PostgreSQL
+- 🎲 **Multiple Games** — Poker, Blackjack, Roulette, Dice, and Fortune
+- 👤 **Authentication** — User registration and login
+- 💰 **Virtual Currency** — Player balances and game progress
+- 🃏 **Server-Side Logic** — Game mechanics and result calculations
+- 🏆 **Player Progression** — Achievements and statistics
+- 🎨 **Responsive Design** — Desktop, tablet, and mobile layouts
+- 💾 **Persistent Storage** — PostgreSQL database integration
 
-## 🛠 Tech Stack
+---
 
-| Frontend | Backend | Database & Deployment |
-|---|---|---|
-| Vue 3 | Node.js | PostgreSQL |
-| Vite | Express.js | Neon |
-| Pinia | REST API | Vercel |
-| Tailwind CSS | Session Authentication | Render |
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|---|---|
+| **Frontend** | Vue 3, Vite, Pinia, Vue Router |
+| **Styling** | Tailwind CSS |
+| **Backend** | Node.js, Express.js, REST API |
+| **Authentication** | Session-based authentication |
+| **Database** | PostgreSQL |
+| **Database Hosting** | Neon |
+| **Frontend Hosting** | Vercel |
+| **Backend Hosting** | Render |
+
+---
 
 ## 📸 Screenshots
 
 ### 🏠 Homepage
-![Emerald Club Homepage](docs/screenshots/Main%20View.png)
+
+![Emerald Club Homepage](docs/screenshots/Main_View.png)
 
 ### 🎮 Games
-![Games Catalog](docs/screenshots/Game%20View.png)
+
+![Games Catalog](docs/screenshots/Game_View.png)
 
 ### 🃏 Blackjack
-![Blackjack Game](docs/screenshots/Blackjack%20View.png)
+
+![Blackjack Game](docs/screenshots/Blackjack_View.png)
 
 ### 🎡 Roulette
-![Roulette Game](docs/screenshots/Roulette%20View.png)
+
+![Roulette Game](docs/screenshots/Roulette_View.png)
 
 ### 👤 Profile
-![Player Profile](docs/screenshots/Profile%20View.png)
+
+![Player Profile](docs/screenshots/Profile_View.png)
 
 ### 📜 Rules
-![Game Rules](docs/screenshots/Rules%20View.png)
+
+![Game Rules](docs/screenshots/Rules_View.png)
 
 ### 🛍️ Shop
-![Emerald Club Shop](docs/screenshots/Shop%20View.png)
 
+![Emerald Club Shop](docs/screenshots/Shop_View.png)
+
+---
 
 ## 🏗️ Architecture
 
-Emerald Club follows a client-server architecture.
+Emerald Club follows a client-server architecture, separating the user interface, business logic, and data persistence.
 
-**Frontend**
-- Vue 3 for building the user interface
-- Pinia for state management
-- Vue Router for navigation
-- Tailwind CSS for responsive design
+### Frontend
 
-**Backend**
+- Vue 3 for building interactive interfaces
+- Pinia for application state management
+- Vue Router for client-side navigation
+- Tailwind CSS for responsive styling
+- REST API integration for communication with the backend
+
+### Backend
+
 - Node.js and Express.js
-- REST API for client-server communication
-- Server-side game logic
+- REST API endpoints
+- Server-side game logic and calculations
 - Authentication and session management
+- Player balance and game session handling
 
-**Database**
+### Database
+
 - PostgreSQL for persistent data storage
-- Player profiles, balances, and game sessions
+- Player profiles and virtual balances
+- Game sessions and player progress
 
-**Deployment**
-- Frontend: Vercel
-- Backend: Render
-- Database: Neon PostgreSQL
+### Deployment
+
+| Service | Platform |
+|---|---|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | Neon PostgreSQL |
 
 ---
 
 ## 🧠 Technical Challenges
 
 ### 🎲 Server-Side Game Logic
-Implemented game logic on the backend to ensure that
-game results are processed on the server rather than
-trusted from the client.
+
+Implemented game mechanics on the backend to process game results without relying on client-side calculations.
 
 ### 🃏 Poker Session Management
-Implemented persistent poker sessions to allow players
-to restore their game state after refreshing the page.
+
+Implemented persistent poker sessions, allowing players to restore their game state after refreshing the page.
 
 ### 🔐 Authentication
-Implemented session-based authentication using cookies
-and backend authorization checks.
+
+Implemented session-based authentication using cookies and backend authorization checks.
 
 ### 📱 Responsive UI
-Built a responsive interface for desktop, tablet,
-and mobile devices using Tailwind CSS.
+
+Designed responsive layouts for desktop, tablet, and mobile devices using Tailwind CSS.
+
+---
 
 ## 🚀 Getting Started
 
-Clone the repository:
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/scRelic/Emerald-Club.git
 cd Emerald-Club
 ```
 
-Install frontend dependencies:
+### 2. Install Dependencies
+
+**Frontend:**
 
 ```bash
 npm install
 ```
 
-Install backend dependencies:
+**Backend:**
 
 ```bash
 cd server
 npm install
+cd ..
 ```
 
-Configure the required environment variables using the example environment files.
+### 3. Configure Environment Variables
 
-Start the frontend:
+Create the required environment files using the provided examples and configure the database connection and application settings.
+
+### 4. Start the Development Servers
+
+**Frontend — from the project root:**
 
 ```bash
 npm run dev
 ```
 
-Start the backend from the `server` directory:
+**Backend — from the server directory:**
 
 ```bash
+cd server
 npm run dev
 ```
-
-## 🧪 Testing
-
-The project includes automated tests for game logic and backend functionality.
-
-Run the relevant test scripts from the project directories.
-
-## 📌 Project Status
-
-**In active development**
-
-Current priorities include improving game mechanics, refining the responsive UI, and expanding automated testing.
-
-## ⚠️ Disclaimer
-
-Emerald Club is an educational pet project using virtual chips. It is not a real-money gambling platform.
 
 ---
 
-**Built as a personal full-stack development project.**
+## 🧪 Testing
+
+The project includes automated tests to help verify game mechanics and backend functionality.
+
+**Testing areas:**
+
+- Poker and Blackjack game logic
+- Game rules and result calculations
+- Backend API behavior
+- Authentication and security
+- Frontend state management
+
+---
+
+## 🚧 Roadmap
+
+Planned improvements:
+
+- [ ] Improve mobile responsiveness
+- [ ] Expand automated test coverage
+- [ ] Add GitHub Actions CI
+- [ ] Improve game animations
+- [ ] Optimize application performance
+- [ ] Improve accessibility
+
+---
+
+## 📌 Project Status
+
+**Status:** Active Development
+
+Emerald Club is an educational full-stack project focused on improving practical skills in frontend development, backend architecture, database integration, and interactive game mechanics.
+
+---
+
+## ⚠️ Disclaimer
+
+Emerald Club is an educational pet project using virtual chips.
+
+**No real-money gambling is supported.**
+
+---
+
+<p align="center">
+  Built as a personal full-stack development project.
+</p>
