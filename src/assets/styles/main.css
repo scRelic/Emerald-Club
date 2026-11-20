@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Cinzel";
+  src: url("../fonts/Cinzel-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --color-casino-bg: #071310;
+  --color-casino-card: #0b211b;
+  --color-casino-surface: #102b23;
+
+  --color-casino-gold: #f5c451;
+  --color-casino-gold-dark: #a77b2f;
+
+  --color-casino-text: #f8f5eb;
+  --color-casino-muted: #9baaa3;
+
+  --color-casino-success: #4ade80;
+  --color-casino-danger: #ef4444;
+
+  --font-sans: "Inter", sans-serif;
+  --font-casino: "Cinzel", serif;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-casino-bg);
+  color: var(--color-casino-text);
+  
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
