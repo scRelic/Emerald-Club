@@ -29,17 +29,73 @@ A personal pet project focused on building an interactive gaming platform with a
 
 ## 📸 Screenshots
 
-_Add screenshots of the homepage, poker table, and other games here._
+### 🏠 Homepage
+![Emerald Club Homepage](docs/screenshots/Main%20View.png)
 
-## 🏗 Architecture
+### 🎮 Games
+![Games Catalog](docs/screenshots/Game%20View.png)
 
-The application is divided into two main parts:
+### 🃏 Blackjack
+![Blackjack Game](docs/screenshots/Blackjack%20View.png)
 
-**Frontend:** Vue components, routing, state management, and API integration.
+### 🎡 Roulette
+![Roulette Game](docs/screenshots/Roulette%20View.png)
 
-**Backend:** Express REST API, authentication, game engines, player progression, and PostgreSQL persistence.
+### 👤 Profile
+![Player Profile](docs/screenshots/Profile%20View.png)
 
-Game results and virtual chip transactions are processed on the server.
+### 📜 Rules
+![Game Rules](docs/screenshots/Rules%20View.png)
+
+### 🛍️ Shop
+![Emerald Club Shop](docs/screenshots/Shop%20View.png)
+
+
+## 🏗️ Architecture
+
+Emerald Club follows a client-server architecture.
+
+**Frontend**
+- Vue 3 for building the user interface
+- Pinia for state management
+- Vue Router for navigation
+- Tailwind CSS for responsive design
+
+**Backend**
+- Node.js and Express.js
+- REST API for client-server communication
+- Server-side game logic
+- Authentication and session management
+
+**Database**
+- PostgreSQL for persistent data storage
+- Player profiles, balances, and game sessions
+
+**Deployment**
+- Frontend: Vercel
+- Backend: Render
+- Database: Neon PostgreSQL
+
+---
+
+## 🧠 Technical Challenges
+
+### 🎲 Server-Side Game Logic
+Implemented game logic on the backend to ensure that
+game results are processed on the server rather than
+trusted from the client.
+
+### 🃏 Poker Session Management
+Implemented persistent poker sessions to allow players
+to restore their game state after refreshing the page.
+
+### 🔐 Authentication
+Implemented session-based authentication using cookies
+and backend authorization checks.
+
+### 📱 Responsive UI
+Built a responsive interface for desktop, tablet,
+and mobile devices using Tailwind CSS.
 
 ## 🚀 Getting Started
 
