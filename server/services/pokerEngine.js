@@ -284,12 +284,16 @@ const continueActions = (state, randomInt) => {
 };
 
 export const startPokerHand = (state, randomInt) => {
-    if (state.tableChips <= 0) {
-        throw Object.assign(new Error('Недостаточно фишек в стеке. Пополните стек или выйдите из-за стола.'), {
-            status: 409,
-        });
-    }
     const table = tableFor(state.tableId);
+
+    if (state.tableChips < table.bigBlind * 10) {
+        throw Object.assign(
+            new Error(
+                `Для начала раздачи необходимо минимум ${table.bigBlind * 10} фишек за столом.`
+            ),
+            { status: 409 }
+        );
+    }
     if (state.botChips <= 0) state.botChips = state.buyIn;
 
     state.deck = createDeck(randomInt);

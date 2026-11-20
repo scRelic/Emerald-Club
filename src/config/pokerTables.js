@@ -3,7 +3,7 @@ export const POKER_TABLES = {
         id: 'classic',
         name: 'Классический зал',
         badge: 'Стандартные ставки',
-        minBuyIn: 50,
+        minBuyIn: 500,
         maxBuyIn: 1000,
         step: 50,
         smallBlind: 25,
