@@ -196,14 +196,6 @@ Planned improvements:
 
 ---
 
-## 📌 Project Status
-
-**Status:** Active Development
-
-Emerald Club is an educational full-stack project focused on improving practical skills in frontend development, backend architecture, database integration, and interactive game mechanics.
-
----
-
 ## ⚠️ Disclaimer
 
 Emerald Club is an educational pet project using virtual chips.
