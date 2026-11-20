@@ -1,81 +1,98 @@
-# Emerald Club
+# ♠ Emerald Club
 
-Казино-клуб на Vue 3 с PostgreSQL API. Сервер хранит профиль и прогресс игрока, проверяет игровые действия и рассчитывает результаты.
+**Full-Stack Casino-Style Gaming Platform**
 
-## Требования
+A personal pet project focused on building an interactive gaming platform with a modern frontend, REST API, persistent player progress, and server-side game logic.
 
-- Node.js 22.18+ или 24.12+
-- PostgreSQL
+[**🎮 Live Demo**](https://emerald-club.vercel.app) · [**💻 Source Code**](https://github.com/scRelic/Emerald-Club)
 
-## Настройка базы и API
+---
 
-1. Создайте базу PostgreSQL.
-2. Откройте `server/schema.sql` в pgAdmin Query Tool, выберите нужную базу и выполните весь скрипт.
-3. Скопируйте `server/.env.example` в `server/.env` и задайте `DATABASE_URL` для своей базы. Не публикуйте и не коммитьте `.env`.
-4. Установите зависимости и запустите API:
+## ✨ Features
 
-   ```powershell
-   cd server
-   npm install
-   npm run dev
-   ```
+- 🎲 Multiple games: Poker, Blackjack, Roulette, Dice, and Fortune
+- 👤 User registration and authentication
+- 💰 Virtual chip balance and game progress
+- 🃏 Server-side game logic and result calculation
+- 🏆 Player achievements and statistics
+- 🎨 Responsive interface with Tailwind CSS
+- 💾 Persistent data storage with PostgreSQL
 
-API работает на `http://localhost:5000`. Маршруты регистрации и авторизации:
+## 🛠 Tech Stack
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/auth/me`
-- `POST /api/auth/logout`
-- `POST /api/player/state` — загрузка состояния профиля из базы; клиентский прогресс не принимается.
-- `PUT /api/player/name` — изменение уникального отображаемого имени.
-- `PUT /api/player/state` — отключён; сервер не принимает баланс, статистику, достижения или инвентарь от клиента.
-- `POST /api/player/daily-bonus` и `POST /api/player/shop` — серверные операции бонуса и магазина.
-- `POST /api/games/dice/round`, `/fortune/round`, `/roulette/round` — серверные игровые раунды.
-- `GET /api/games/blackjack/session`, `POST /api/games/blackjack/start` и `/action` — блэкджек.
-- `GET /api/games/poker/session`, `POST /api/games/poker/sit`, `/action`, `/next-hand` и `/leave` — покер.
+| Frontend | Backend | Database & Deployment |
+|---|---|---|
+| Vue 3 | Node.js | PostgreSQL |
+| Vite | Express.js | Neon |
+| Pinia | REST API | Vercel |
+| Tailwind CSS | Session Authentication | Render |
 
-Пароли хешируются на сервере, а сессия хранится в защищённой HttpOnly cookie. Для production задайте `CLIENT_ORIGINS` и HTTPS.
-Вход ограничен 5 неуспешными попытками за 15 минут на IP, регистрация — 5 попытками за час на IP. Лимит хранится в памяти процесса; для нескольких API-инстансов нужен общий rate-limit store. Все запросы, изменяющие данные, требуют `Origin`, совпадающий с одним из `CLIENT_ORIGINS`; в production без списка разрешённых HTTPS-origin сервер не запускается. Указывайте точные origin без пути. Эта проверка действует и при `SameSite=None`. Если API работает за reverse proxy, задайте `TRUST_PROXY_HOPS` числом доверенных proxy-переходов (по умолчанию `0`); не включайте безусловное доверие ко всем proxy.
+## 📸 Screenshots
 
-## Запуск фронтенда
+_Add screenshots of the homepage, poker table, and other games here._
 
-В отдельном терминале из корня проекта:
+## 🏗 Architecture
 
-```powershell
+The application is divided into two main parts:
+
+**Frontend:** Vue components, routing, state management, and API integration.
+
+**Backend:** Express REST API, authentication, game engines, player progression, and PostgreSQL persistence.
+
+Game results and virtual chip transactions are processed on the server.
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/scRelic/Emerald-Club.git
+cd Emerald-Club
+```
+
+Install frontend dependencies:
+
+```bash
 npm install
+```
+
+Install backend dependencies:
+
+```bash
+cd server
+npm install
+```
+
+Configure the required environment variables using the example environment files.
+
+Start the frontend:
+
+```bash
 npm run dev
 ```
 
-Откройте адрес Vite, обычно `http://localhost:5173`. При необходимости задайте `VITE_API_BASE_URL` в корневом `.env`, скопировав `.env.example`.
+Start the backend from the `server` directory:
 
-Регистрация создаёт аккаунт и профиль в базе. Баланс, уровень, опыт, статистика, история игр, достижения, инвентарь, покупки и бонусы хранятся в PostgreSQL. Итог броска/спина, ставки и выплаты рассчитываются сервером; клиент не может отправить снимок с подменённым балансом. Активные раздачи блэкджека сохраняются на сервере и восстанавливаются при повторном входе. При выходе со стола оставшийся покерный стек возвращается на баланс; незакрытая покерная сессия автоматически закрывается при следующем входе в покер. Каждая изменяющая операция использует UUID запроса для безопасного повтора при сетевых сбоях.
-
-Гости могут просматривать страницы клуба и список игр. Игры, профиль и покупки требуют авторизации; при переходе к ним приложение отправляет гостя на `/auth`, а после входа возвращает к выбранной странице. При выходе локальный кэш профиля очищается, а данные в PostgreSQL сохраняются и восстанавливаются при следующем входе. Авторизация использует серверную HttpOnly cookie.
-
-Это демонстрационный проект: баланс не имеет денежной стоимости, а игровой движок не предназначен для ставок или ценных призов.
-
-## Проверки
-
-Из корня проекта:
-
-```powershell
-npm run build
-npm run test:dice
-npm run test:blackjack
-npm run test:fortune
-npm run test:poker
-npm run test:roulette
-npm run test:store
-node --test src/services/gameApi.test.js
+```bash
+npm run dev
 ```
 
-Проверки backend из папки `server`:
+## 🧪 Testing
 
-```powershell
-npm run test:auth
-npm run test:player-state
-npm run test:security
-npm run test:games
-```
+The project includes automated tests for game logic and backend functionality.
 
-При обновлении существующей базы повторно выполните `server/schema.sql`, чтобы создать новые таблицы игровых сессий и идемпотентности.
+Run the relevant test scripts from the project directories.
+
+## 📌 Project Status
+
+**In active development**
+
+Current priorities include improving game mechanics, refining the responsive UI, and expanding automated testing.
+
+## ⚠️ Disclaimer
+
+Emerald Club is an educational pet project using virtual chips. It is not a real-money gambling platform.
+
+---
+
+**Built as a personal full-stack development project.**
