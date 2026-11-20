@@ -4,7 +4,6 @@ import { POKER_TABLES } from "@/config/pokerTables";
 import { formatNumber } from "@/utils";
 import { otherGames } from "@/utils/data";
 
-
 const activeCategory = ref("all");
 
 const categories = [
@@ -14,11 +13,10 @@ const categories = [
   { id: "casino", label: "Казино" },
 ];
 
-
 const selectedPokerRoom = ref("classic");
 
 const pokerRoomsList = [
-  { id: "classic", label: "50 — 1 000", online: 98 },
+  { id: "classic", label: "500 — 1 000", online: 98 },
   { id: "vip", label: "1 000 — 5 000", online: 42 },
   { id: "highroller", label: "5 000 — 25 000", online: 14 },
 ];
@@ -32,7 +30,6 @@ const filteredOtherGames = computed(() => {
 
 <template>
   <div class="w-full max-w-[1250px] mx-auto px-4 sm:px-6 py-8 sm:py-10 text-white">
-    
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10 z-10 relative">
       <div>
         <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-amber-400/80 block mb-1.5"> Игровой зал </span>
@@ -41,7 +38,6 @@ const filteredOtherGames = computed(() => {
         </h1>
       </div>
 
-      
       <div class="flex flex-wrap items-center gap-2 bg-black/35 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md self-start md:self-auto">
         <button
           v-for="cat in categories"
@@ -58,9 +54,7 @@ const filteredOtherGames = computed(() => {
       </div>
     </div>
 
-    
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      
       <template v-for="game in filteredOtherGames" :key="game.id">
         <div
           v-if="game.id === 'blackjack'"
@@ -121,7 +115,6 @@ const filteredOtherGames = computed(() => {
         </div>
       </template>
 
-      
       <div
         v-if="showPoker"
         class="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#2d0d16] via-[#1f0910] to-[#140509] border border-rose-500/20 p-6 sm:p-7 flex flex-col justify-between shadow-xl transition duration-300 hover:-translate-y-0.5">
@@ -139,7 +132,6 @@ const filteredOtherGames = computed(() => {
             Собирай комбинации, читай соперников и блефуй за столами разных лимитов.
           </p>
 
-          
           <div class="flex flex-wrap items-center gap-2 mb-6">
             <button
               v-for="room in pokerRoomsList"
@@ -185,7 +177,6 @@ const filteredOtherGames = computed(() => {
         </div>
       </div>
 
-      
       <template v-for="game in filteredOtherGames" :key="game.id">
         <div
           v-if="game.id !== 'blackjack'"
@@ -213,11 +204,7 @@ const filteredOtherGames = computed(() => {
             <p class="text-xs font-semibold text-amber-400 mb-1">
               {{ game.subtitle }}
             </p>
-            <h3
-              :class="[
-                'font-casino text-white tracking-wide mb-2.5',
-                game.category === 'casino' ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl',
-              ]">
+            <h3 :class="['font-casino text-white tracking-wide mb-2.5', game.category === 'casino' ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl']">
               {{ game.title }}
             </h3>
             <p class="text-xs sm:text-sm text-gray-300/85 leading-relaxed mb-6 max-w-md">
