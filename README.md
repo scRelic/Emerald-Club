@@ -35,35 +35,50 @@ Emerald Club is a personal full-stack pet project focused on building an interac
 
 ---
 
-## 📸 Screenshots
 
-### 🏠 Homepage
+<h2>📸 Screenshots</h2>
 
-![Emerald Club Homepage](docs/screenshots/Main_View.png)
+<details>
+  <summary>🏠 Homepage</summary>
+  <br>
+  <img src="docs/screenshots/Main_View.png" alt="Homepage">
+</details>
 
-### 🎮 Games
+<details>
+  <summary>🎮 Games</summary>
+  <br>
+  <img src="docs/screenshots/Game_View.png" alt="Games">
+</details>
 
-![Games Catalog](docs/screenshots/Game_View.png)
+<details>
+  <summary>🃏 Blackjack</summary>
+  <br>
+  <img src="docs/screenshots/Blackjack_View.png" alt="Blackjack">
+</details>
 
-### 🃏 Blackjack
+<details>
+  <summary>🎡 Roulette</summary>
+  <br>
+  <img src="docs/screenshots/Roulette_View.png" alt="Roulette">
+</details>
 
-![Blackjack Game](docs/screenshots/Blackjack_View.png)
+<details>
+  <summary>👤 Profile</summary>
+  <br>
+  <img src="docs/screenshots/Profile_View.png" alt="Profile">
+</details>
 
-### 🎡 Roulette
+<details>
+  <summary>📜 Rules</summary>
+  <br>
+  <img src="docs/screenshots/Rules_View.png" alt="Rules">
+</details>
 
-![Roulette Game](docs/screenshots/Roulette_View.png)
-
-### 👤 Profile
-
-![Player Profile](docs/screenshots/Profile_View.png)
-
-### 📜 Rules
-
-![Game Rules](docs/screenshots/Rules_View.png)
-
-### 🛍️ Shop
-
-![Emerald Club Shop](docs/screenshots/Shop_View.png)
+<details>
+  <summary>🛍️ Shop</summary>
+  <br>
+  <img src="docs/screenshots/Shop_View.png" alt="Shop">
+</details>
 
 ---
 
