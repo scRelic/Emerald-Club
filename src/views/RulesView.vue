@@ -91,7 +91,6 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
 
 <template>
   <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-8 sm:py-10 text-white relative z-10">
-    
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
       <div>
         <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-amber-400/80 block mb-1.5"> Справочник клуба </span>
@@ -101,7 +100,6 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
         </p>
       </div>
 
-      
       <div class="flex flex-wrap items-center gap-2 bg-black/40 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md self-start md:self-auto">
         <button
           @click="activeTab = 'poker'"
@@ -138,9 +136,7 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
           @click="activeTab = 'dice'"
           :class="[
             'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2',
-            activeTab === 'dice'
-              ? 'bg-gradient-to-b from-[#F9D876] to-[#D49824] text-[#1c1304] shadow-md'
-              : 'text-gray-300 hover:text-white hover:bg-white/5',
+            activeTab === 'dice' ? 'bg-gradient-to-b from-[#F9D876] to-[#D49824] text-[#1c1304] shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5',
           ]">
           <span>⚄</span> Кости
         </button>
@@ -158,11 +154,8 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
       </div>
     </div>
 
-    
     <div v-if="activeTab === 'poker'" class="space-y-8">
-      
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
         <div
           class="lg:col-span-5 rounded-3xl bg-gradient-to-br from-[#2d0d16] via-[#1f0910] to-[#140509] border border-rose-500/20 p-6 sm:p-7 flex flex-col justify-between shadow-xl">
           <div>
@@ -183,7 +176,11 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-amber-400 font-bold">2.</span>
-                <span><strong>Блайнды и позиции:</strong> обычно малый и большой блайнды ставят игроки слева от дилера; в игре один на один дилер ставит малый блайнд, соперник — большой. Префлоп первым действует игрок слева от большого блайнда, на следующих улицах — первый активный игрок слева от дилера.</span>
+                <span
+                  ><strong>Блайнды и позиции:</strong> обычно малый и большой блайнды ставят игроки слева от дилера; в игре один на один дилер ставит малый
+                  блайнд, соперник — большой. Префлоп первым действует игрок слева от большого блайнда, на следующих улицах — первый активный игрок слева от
+                  дилера.</span
+                >
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-amber-400 font-bold">3.</span>
@@ -194,17 +191,17 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
             </ul>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-gray-400">Готовы проверить стратегию?</span>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3 max-[440px]:flex-col max-[440px]:items-stretch">
+            <span class="text-xs text-gray-400 max-[440px]:text-center"> Готовы проверить стратегию? </span>
+
             <router-link
               to="/games/poker"
-              class="px-5 py-2.5 rounded-xl font-bold text-xs text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 transition">
+              class="px-5 py-2.5 rounded-xl font-bold text-xs text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 transition max-[440px]:w-full max-[440px]:text-center">
               Перейти за стол ▶
             </router-link>
           </div>
         </div>
 
-        
         <div class="lg:col-span-7 rounded-3xl bg-[#0e1412]/90 border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-xl">
           <div>
             <h3 class="font-casino text-2xl text-amber-200 mb-4">Этапы раздачи (Улицы)</h3>
@@ -246,13 +243,13 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
               </span>
             </div>
             <p class="text-xs text-gray-400 mt-3 leading-relaxed">
-              Размеры блайндов зависят от стола. Минимальное полное повышение — не меньше большого блайнда, а последующие — не меньше предыдущего полного повышения. Короткий олл-ин разрешён, но не переоткрывает торги.
+              Размеры блайндов зависят от стола. Минимальное полное повышение — не меньше большого блайнда, а последующие — не меньше предыдущего полного
+              повышения. Короткий олл-ин разрешён, но не переоткрывает торги.
             </p>
           </div>
         </div>
       </div>
 
-      
       <div class="rounded-3xl bg-[#0e1412]/90 border border-amber-400/15 p-6 sm:p-8 shadow-xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
           <div>
@@ -285,7 +282,6 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
               </div>
             </div>
 
-            
             <div class="flex items-center gap-1.5 shrink-0 self-start md:self-center">
               <div
                 v-for="(card, idx) in combo.example"
@@ -303,10 +299,8 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
       </div>
     </div>
 
-    
     <div v-else-if="activeTab === 'blackjack'" class="space-y-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
         <div
           class="lg:col-span-7 rounded-3xl bg-gradient-to-br from-[#0f2920] via-[#0b1f18] to-[#07140f] border border-emerald-500/20 p-6 sm:p-7 flex flex-col justify-between shadow-xl">
           <div>
@@ -320,7 +314,6 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
               превысить 21 (перебор означает мгновенный проигрыш ставки).
             </p>
 
-            
             <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-3">Номинал карт</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
               <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10">
@@ -341,26 +334,24 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
               </div>
             </div>
 
-            
             <div class="p-4 rounded-2xl bg-emerald-950/50 border border-emerald-400/20 text-xs sm:text-sm text-gray-200">
               <strong class="text-emerald-300">Правило дилера Emerald Club:</strong> Дилер обязан брать карты (Hit), пока сумма его очков меньше 17, и обязан
               остановиться (Stand), как только наберёт <strong>17 или больше очков</strong>.
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-gray-400">Лимиты стола: от 50 до 5 000 фишек</span>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3 max-[520px]:flex-col max-[440px]:items-stretch">
+            <span class="text-xs text-gray-400 max-[440px]:text-center"> Лимиты стола: от 50 до 5 000 фишек</span>
+
             <router-link
               to="/games/blackjack"
-              class="px-5 py-2.5 rounded-xl font-bold text-xs text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 transition">
+              class="px-5 py-2.5 rounded-xl font-bold text-xs text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 transition max-[520px]:w-full max-[520px]:text-center">
               Играть в Блэкджек ▶
             </router-link>
           </div>
         </div>
 
-        
         <div class="lg:col-span-5 space-y-6">
-          
           <div class="rounded-3xl bg-[#0e1412]/90 border border-amber-400/20 p-6 shadow-xl">
             <h3 class="font-casino text-xl text-amber-200 mb-4">Коэффициенты выплат</h3>
             <div class="space-y-3 text-xs sm:text-sm">
@@ -390,7 +381,6 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
             </div>
           </div>
 
-          
           <div class="rounded-3xl bg-[#0e1412]/90 border border-white/10 p-6 shadow-xl">
             <h3 class="font-casino text-xl text-white mb-4">Действия во время хода</h3>
             <ul class="space-y-3 text-xs text-gray-300">
@@ -412,10 +402,8 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
       </div>
     </div>
 
-    
     <div v-else-if="activeTab === 'roulette'" class="space-y-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
         <div
           class="lg:col-span-7 rounded-3xl bg-gradient-to-br from-[#0e1c18] via-[#091411] to-[#050c0a] border border-emerald-500/20 p-6 sm:p-7 flex flex-col justify-between shadow-xl">
           <div>
@@ -448,17 +436,17 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-gray-400">Лимиты стола: от 25 до 5 000 фишек</span>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3 max-[520px]:flex-col max-[440px]:items-stretch">
+            <span class="text-xs text-gray-400 max-[440px]:text-center"> Лимиты стола: от 25 до 5 000 фишек</span>
+
             <router-link
               to="/games/roulette"
-              class="px-5 py-2.5 rounded-xl font-bold text-xs text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 transition">
+              class="px-5 py-2.5 rounded-xl font-bold text-xs text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 transition max-[520px]:w-full max-[520px]:text-center">
               Крутить рулетку ▶
             </router-link>
           </div>
         </div>
 
-        
         <div class="lg:col-span-5 rounded-3xl bg-[#0e1412]/90 border border-amber-400/20 p-6 shadow-xl flex flex-col justify-between">
           <div>
             <h3 class="font-casino text-xl text-amber-200 mb-4">Коэффициенты выплат</h3>
@@ -513,12 +501,14 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
     <div v-else-if="activeTab === 'dice'" class="space-y-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="lg:col-span-7 rounded-3xl bg-gradient-to-br from-[#241237] via-[#180d29] to-[#0d0716] border border-violet-500/20 p-6 sm:p-7 shadow-xl">
-          <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-violet-500/20 text-violet-200 border border-violet-400/30 inline-block mb-4">
+          <span
+            class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-violet-500/20 text-violet-200 border border-violet-400/30 inline-block mb-4">
             Два шестигранных кубика
           </span>
           <h2 class="font-casino text-2xl sm:text-3xl text-white mb-3">Как играть в кости</h2>
           <p class="text-xs sm:text-sm text-gray-300/90 leading-relaxed mb-5">
-            Выберите размер ставки и предскажите сумму двух кубиков. После броска ставка списывается с баланса. При выигрыше выплата включает возвращённую ставку.
+            Выберите размер ставки и предскажите сумму двух кубиков. После броска ставка списывается с баланса. При выигрыше выплата включает возвращённую
+            ставку.
           </p>
           <ul class="space-y-3 text-xs sm:text-sm text-gray-300">
             <li><strong class="text-amber-300">Меньше 7:</strong> суммы от 2 до 6, выплата x2.</li>
@@ -547,12 +537,14 @@ const isRedCard = (cardStr) => cardStr.includes("♥") || cardStr.includes("♦"
     <div v-else class="space-y-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="lg:col-span-7 rounded-3xl bg-gradient-to-br from-[#35220d] via-[#201508] to-[#100b05] border border-amber-500/20 p-6 sm:p-7 shadow-xl">
-          <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-400/15 text-amber-200 border border-amber-400/30 inline-block mb-4">
+          <span
+            class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-400/15 text-amber-200 border border-amber-400/30 inline-block mb-4">
             Одиннадцать равных секторов
           </span>
           <h2 class="font-casino text-2xl sm:text-3xl text-white mb-3">Как играть в Колесо фортуны</h2>
           <p class="text-xs sm:text-sm text-gray-300/90 leading-relaxed mb-5">
-            Выберите ставку, затем запустите колесо. После вращения ставка списывается, а выплата начисляется на баланс; размер выплаты равен ставке, умноженной на коэффициент сектора.
+            Выберите ставку, затем запустите колесо. После вращения ставка списывается, а выплата начисляется на баланс; размер выплаты равен ставке, умноженной
+            на коэффициент сектора.
           </p>
           <ul class="space-y-3 text-xs sm:text-sm text-gray-300">
             <li><strong class="text-rose-300">x0:</strong> ставка проигрывает.</li>
