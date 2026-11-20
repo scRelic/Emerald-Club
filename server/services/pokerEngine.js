@@ -336,16 +336,20 @@ export const startPokerHand = (state, randomInt) => {
 
 export const createPokerSession = ({ tableId, buyIn }, randomInt) => {
     const table = tableFor(tableId);
+
     if (
         !Number.isSafeInteger(buyIn) ||
         buyIn < table.minBuyIn ||
         buyIn > table.maxBuyIn ||
         buyIn % table.step !== 0
     ) {
-        throw Object.assign(new Error('Некорректная сумма для входа за выбранный стол.'), { status: 400 });
+        throw Object.assign(
+            new Error('Некорректная сумма для входа за выбранный стол.'),
+            { status: 400 }
+        );
     }
 
-    const state = {
+    return {
         tableId,
         buyIn,
         tableChips: buyIn,
@@ -353,8 +357,37 @@ export const createPokerSession = ({ tableId, buyIn }, randomInt) => {
         botId: 'bot-1',
         botName: 'Виктор',
         dealerIndex: 0,
+
+        deck: [],
+        playerCards: [],
+        botCards: [],
+        communityCards: [],
+
+        stage: 'idle',
+        pot: 0,
+        currentBet: 0,
+        playerRoundBet: 0,
+        botRoundBet: 0,
+        playerTotalInvested: 0,
+        botTotalInvested: 0,
+
+        currentActorId: null,
+        pendingActors: [],
+        minRaiseSize: table.bigBlind,
+
+        playerFolded: false,
+        botFolded: false,
+        showdownRevealed: false,
+        botLastAction: '',
+
+        resultMessage: '',
+        resultType: 'neutral',
+        winnerIds: [],
+        playerHandEval: null,
+        botHandEval: null,
+        pendingRoundResult: null,
+        handHistory: [],
     };
-    return startPokerHand(state, randomInt);
 };
 
 export const applyPokerAction = (state, { action, amount }, randomInt) => {
@@ -418,13 +451,14 @@ export const leavePokerTable = (state, randomInt) => {
 };
 
 export const getPublicPokerState = (state) => {
-    const revealCount = state.stage === 'preflop'
-        ? 0
-        : state.stage === 'flop'
-            ? 3
-            : state.stage === 'turn'
-                ? 4
-                : 5;
+    const revealCount = {
+        idle: 0,
+        preflop: 0,
+        flop: 3,
+        turn: 4,
+        river: 5,
+        showdown: 5,
+    }[state.stage] ?? 0;
     const revealed = state.showdownRevealed;
     const botCards = revealed
         ? state.botCards

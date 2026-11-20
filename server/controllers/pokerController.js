@@ -97,7 +97,7 @@ export const createPokerController = ({
             if (!sessionResult.rowCount) throw httpError(404, 'Покерный стол не найден.');
 
             const state = sessionResult.rows[0].state;
-            if (state.stage !== 'showdown') {
+            if (state.stage !== 'showdown' && state.stage !== 'idle') {
                 throw httpError(409, 'Сначала завершите текущую раздачу.');
             }
             startPokerHand(state, randomInt);

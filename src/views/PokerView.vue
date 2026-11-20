@@ -88,19 +88,18 @@ const getSeatPosition = (index, total) => {
       class="fixed top-20 left-1/2 -translate-x-1/2 z-50 max-w-lg rounded-xl border border-rose-400/40 bg-rose-950/90 px-4 py-3 text-center text-sm text-rose-100 shadow-xl">
       {{ errorMessage }}
     </div>
-    
+
     <div
       v-if="isSeated && stage !== 'idle'"
       class="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col w-64 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-md p-3 shadow-2xl">
       <div class="text-[11px] font-bold uppercase tracking-wider text-amber-400 mb-2 border-b border-white/10 pb-1">История раздачи</div>
-      
+
       <div
         class="flex flex-col gap-1.5 max-h-48 overflow-y-auto pr-1 text-xs text-gray-300 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-amber-400/20 [&::-webkit-scrollbar-thumb]:rounded-full">
         <div v-for="(log, idx) in handHistory" :key="idx" class="leading-tight">• {{ log }}</div>
       </div>
     </div>
     <div class="relative z-10 w-full max-w-[1150px] mx-auto px-4 py-4 sm:py-6 flex-1 flex flex-col items-center justify-center gap-5">
-      
       <div
         :class="[
           'w-full rounded-[44px] md:rounded-[180px] p-3.5 sm:p-4 shadow-[0_30px_90px_rgba(0,0,0,0.85)] border transition-colors duration-500',
@@ -114,18 +113,16 @@ const getSeatPosition = (index, total) => {
                   ? 'bg-gradient-to-b from-[#155e75] via-[#083344] to-[#0e7490] border-cyan-900/50'
                   : tableTheme.id === 'table-royal-purple'
                     ? 'bg-gradient-to-b from-[#5b21b6] via-[#3b0764] to-[#6b21a8] border-violet-900/50'
-                : 'bg-gradient-to-b from-[#8a5530] via-[#4e2e19] to-[#9e6d42] border-amber-900/40',
+                    : 'bg-gradient-to-b from-[#8a5530] via-[#4e2e19] to-[#9e6d42] border-amber-900/40',
         ]">
         <div
           style="min-height: 580px"
           :style="tableSurfaceStyle"
           class="relative w-full h-[580px] sm:h-[640px] overflow-hidden rounded-[34px] md:rounded-[168px] border-[5px] border-[#22170f] shadow-[inset_0_0_70px_rgba(0,0,0,0.85)] flex flex-col justify-between md:justify-center py-5 px-4">
-          
           <div class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center select-none">
             <h1 class="font-casino text-4xl sm:text-6xl font-bold tracking-[0.35em] text-amber-300/[0.04] text-center">TEXAS HOLD'EM</h1>
           </div>
 
-          
           <div v-if="isSeated && stage !== 'idle'" class="relative z-20 flex flex-wrap items-center justify-center gap-3 md:contents">
             <div
               v-for="(bot, index) in bots"
@@ -136,7 +133,6 @@ const getSeatPosition = (index, total) => {
                 bot.folded ? 'opacity-45' : '',
                 isBotsTurn && bot.lastAction === 'Думает...' ? 'scale-105 z-30' : '',
               ]">
-              
               <div v-if="dealerSeatId === bot.id || sbSeatId === bot.id || bbSeatId === bot.id" class="flex gap-1 -mb-1 z-10">
                 <span
                   v-if="dealerSeatId === bot.id"
@@ -187,7 +183,6 @@ const getSeatPosition = (index, total) => {
             </div>
           </div>
 
-          
           <div v-if="isSeated" class="relative z-10 flex flex-col items-center justify-center gap-3 min-h-[155px] md:-mt-6">
             <div
               v-if="stage !== 'idle'"
@@ -198,18 +193,14 @@ const getSeatPosition = (index, total) => {
               <span class="text-gray-600">|</span>
               <span class="text-gray-300">Банк:</span>
               <span class="font-bold text-amber-300 tabular-nums">{{ formatNumber(pot) }} фишек</span>
-              
+
               <div v-if="stage !== 'idle' && stage !== 'showdown'" class="flex flex-col items-center my-3">
-                
-                <div v-if="playerFolded" class="text-gray-300 font-bold text-sm">
-                  Вы сбросили карты — соперники продолжают раздачу
-                </div>
+                <div v-if="playerFolded" class="text-gray-300 font-bold text-sm">Вы сбросили карты — соперники продолжают раздачу</div>
 
                 <div v-else-if="isBotsTurn" class="text-amber-400 font-bold text-sm animate-pulse flex items-center gap-2">
                   <span>🤖 Соперники думают над ходом...</span>
                 </div>
 
-                
                 <div v-else class="flex items-center gap-3 bg-black/40 px-4 py-2 rounded-2xl border border-white/10">
                   <span class="text-xs text-gray-300">Ваш ход:</span>
                   <div class="w-24 bg-gray-700 h-2.5 rounded-full overflow-hidden">
@@ -254,11 +245,9 @@ const getSeatPosition = (index, total) => {
             </div>
           </div>
 
-          
           <div
             v-if="isSeated && stage !== 'idle'"
             class="relative md:absolute md:bottom-5 md:left-1/2 md:-translate-x-1/2 z-20 flex flex-col items-center gap-1.5">
-            
             <div v-if="dealerSeatId === 'player' || sbSeatId === 'player' || bbSeatId === 'player'" class="flex gap-1 -mb-1">
               <span
                 v-if="dealerSeatId === 'player'"
@@ -293,7 +282,6 @@ const getSeatPosition = (index, total) => {
             </div>
           </div>
 
-          
           <div v-if="!isSeated" class="absolute inset-0 flex flex-col items-center justify-center bg-black/55 backdrop-blur-sm z-30 p-4 sm:p-6 text-center">
             <div class="w-full max-w-lg rounded-3xl bg-[#16080c]/95 border border-amber-400/25 p-5 sm:p-7 shadow-2xl flex flex-col items-center">
               <span class="text-[11px] font-bold uppercase tracking-[0.25em] text-amber-400/80 mb-1">
@@ -304,7 +292,6 @@ const getSeatPosition = (index, total) => {
               </h2>
               <p class="text-xs sm:text-sm text-gray-300 mb-5">Выберите размер стека (Buy-in), с которым сядете за стол</p>
 
-              
               <div class="w-full flex items-baseline justify-between mb-2">
                 <span class="text-xs text-gray-400">Ваш стек за столом:</span>
                 <span class="text-2xl font-extrabold text-amber-300 tabular-nums">
@@ -312,7 +299,6 @@ const getSeatPosition = (index, total) => {
                 </span>
               </div>
 
-              
               <input
                 v-model.number="buyInAmount"
                 type="range"
@@ -322,7 +308,6 @@ const getSeatPosition = (index, total) => {
                 :disabled="maxBuyIn < minBuyIn"
                 class="w-full h-2 bg-white/15 rounded-lg appearance-none cursor-pointer accent-amber-400 mb-3" />
 
-              
               <div class="w-full flex items-center justify-between text-[11px] text-gray-400 mb-5">
                 <button
                   type="button"
@@ -349,7 +334,6 @@ const getSeatPosition = (index, total) => {
                 </button>
               </div>
 
-              
               <p v-if="maxBuyIn < minBuyIn" class="text-xs text-rose-300 bg-rose-500/10 border border-rose-400/25 rounded-xl px-3 py-2 mb-4 w-full">
                 Для входа за этот стол нужно минимум {{ formatNumber(minBuyIn) }} фишек
               </p>
@@ -369,12 +353,9 @@ const getSeatPosition = (index, total) => {
         </div>
       </div>
 
-      
-      
       <div
         v-if="isSeated"
         class="w-full max-w-4xl rounded-3xl bg-[#0c1914]/90 border border-amber-400/20 backdrop-blur-xl px-5 py-4 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-4">
-        
         <div class="flex flex-col items-center lg:items-start gap-1.5">
           <div class="flex items-center gap-2 text-xs text-gray-400">
             <span class="uppercase tracking-wider font-bold text-amber-400/80">{{ currentTable.name }}</span>
@@ -402,7 +383,6 @@ const getSeatPosition = (index, total) => {
           </div>
         </div>
 
-        
         <div class="flex flex-col items-center lg:items-end gap-2.5 w-full lg:w-auto">
           <template v-if="isPlaying() && !playerFolded">
             <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 w-full">
@@ -452,13 +432,13 @@ const getSeatPosition = (index, total) => {
             </div>
           </template>
 
-          <template v-else-if="stage === 'showdown'">
+          <template v-else-if="stage === 'showdown' || stage === 'idle'">
             <div class="flex flex-wrap items-center justify-center gap-2.5 w-full sm:w-auto">
               <button
                 v-if="tableChips > 0"
                 @click="startNewHand"
                 class="flex-1 sm:flex-initial px-7 py-3 rounded-xl font-bold text-sm text-[#1c1304] bg-gradient-to-b from-[#F9D876] to-[#D49824] hover:brightness-110 active:scale-95 transition cursor-pointer shadow-lg">
-                Новая раздача
+                {{ stage === "idle" ? "Начать раздачу" : "Новая раздача" }}
               </button>
 
               <button
